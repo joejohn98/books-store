@@ -11,7 +11,7 @@ interface BooksContextProps {
   isRead: (id: number) => boolean;
   loading: boolean;
   error: string | null;
-  user: User;
+  user: User | null;
 }
 
 const BooksContext = createContext<BooksContextProps | null>(null);
@@ -49,4 +49,44 @@ export const BooksProvider = ({ children }: { children: React.ReactNode }) => {
     };
     fetchBooks();
   }, []);
+
+  const addToRead = (book: Book) => {
+    if (!readBooks.some((b) => b.id === book.id)) {
+      setReadBooks((prev) => [...prev, book]);
+    }
+  };
+  const addToFavorites = (book: Book) => {
+    const isAlreadyFavorite = favorites.find((b) => b.id === book.id);
+    if (!isAlreadyFavorite) {
+      setFavorites((prev) => [...prev, book]);
+    }
+  };
+
+  const isFavorite = (id: number) => {
+    return favorites.some((book) => book.id === id);
+  };
+
+  const isRead = (id: number) => {
+    return readBooks.some((book) => book.id === id);
+  };
+  return (
+    <>
+      <BooksContext.Provider
+        value={{
+          books,
+          favorites,
+          readBooks,
+          addToRead,
+          addToFavorites,
+          isFavorite,
+          isRead,
+          loading,
+          error,
+          user,
+        }}
+      >
+        {children}
+      </BooksContext.Provider>
+    </>
+  );
 };
