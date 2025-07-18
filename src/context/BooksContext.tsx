@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import type { Book, User } from "../types";
 
 interface BooksContextProps {
@@ -15,6 +15,14 @@ interface BooksContextProps {
 }
 
 const BooksContext = createContext<BooksContextProps | null>(null);
+
+export const useBooksContext = () => {
+  const context = useContext(BooksContext);
+  if (!context) {
+    throw new Error("useBooksContext must be used within a BooksProvider");
+  }
+  return context;
+}
 
 export const BooksProvider = ({ children }: { children: React.ReactNode }) => {
   const [books, setBooks] = useState<Book[]>([]);
