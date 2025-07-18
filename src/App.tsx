@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import { BooksProvider } from "./context/BooksContext";
 import Home from "./pages/Home";
+import Read from "./pages/Read";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/favorites" element={<div>Favorites Page</div>} />
-              <Route path="/read" element={<div>Read Page</div>} />
+              <Route path="/read" element={<Read />} />
               <Route path="/profile" element={<div>Profile Page</div>} />
             </Routes>
           </div>
