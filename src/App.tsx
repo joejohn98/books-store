@@ -5,6 +5,7 @@ import { BooksProvider } from "./context/BooksContext";
 import Home from "./pages/Home";
 import Read from "./pages/Read";
 import Favorites from "./pages/Favorites";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/read" element={<Read />} />
-              <Route path="/profile" element={<div>Profile Page</div>} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </div>
         </BooksProvider>
