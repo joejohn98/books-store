@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import { BooksProvider } from "./context/BooksContext";
 import Home from "./pages/Home";
 import Read from "./pages/Read";
+import Favorites from "./pages/Favorites";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/favorites" element={<div>Favorites Page</div>} />
+              <Route path="/favorites" element={<Favorites />} />
               <Route path="/read" element={<Read />} />
               <Route path="/profile" element={<div>Profile Page</div>} />
             </Routes>
