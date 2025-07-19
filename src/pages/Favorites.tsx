@@ -30,7 +30,7 @@ const Favorites: React.FC = () => {
             key={favorite.id}
             className="mb-2 p-2 border border-gray-300 rounded shadow-md"
           >
-            <div className="w-full flex-col justify-between items-center">
+            <div className="w-full flex flex-col justify-between items-center">
               <img
                 src={favorite.image}
                 alt={favorite.title}
