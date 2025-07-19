@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Read from "./pages/Read";
 import Favorites from "./pages/Favorites";
 import Profile from "./pages/Profile";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/read" element={<Read />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
         </BooksProvider>
