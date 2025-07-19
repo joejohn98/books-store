@@ -1,11 +1,23 @@
 import { useBooksContext } from "../context/BooksContext";
 
 const Read: React.FC = () => {
-  const { readBooks } = useBooksContext();
+  const { readBooks, loading } = useBooksContext();
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-xl text-center text-gray-600">
+          Loading Read Books...
+        </p>
+      </div>
+    );
+  }
 
   if (readBooks.length === 0) {
     return (
-      <p className="text-center text-xl text-gray-600 mt-24">No books read yet.</p>
+      <p className="text-center text-xl text-gray-600 mt-24">
+        No books read yet.
+      </p>
     );
   }
 
@@ -14,7 +26,10 @@ const Read: React.FC = () => {
       <h1 className="text-2xl font-bold mb-4">Books You've Read</h1>
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {readBooks.map((book) => (
-          <li key={book.id} className="mb-2 p-2 border border-gray-300 rounded shadow-md">
+          <li
+            key={book.id}
+            className="mb-2 p-2 border border-gray-300 rounded shadow-md"
+          >
             <div className="w-full flex-col justify-between items-center">
               <img
                 src={book.image}

@@ -1,18 +1,35 @@
 import { useBooksContext } from "../context/BooksContext";
 
 const Favorites: React.FC = () => {
-    const { favorites } = useBooksContext();
+  const { favorites, loading } = useBooksContext();
 
-   if(favorites.length === 0) {
-        return <p className="text-center text-xl text-gray-600 mt-24">No favorite books yet.</p>
-    }
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-xl text-center text-gray-600">
+          Loading Favorites...
+        </p>
+      </div>
+    );
+  }
+
+  if (favorites.length === 0) {
+    return (
+      <p className="text-center text-xl text-gray-600 mt-24">
+        No favorite books yet.
+      </p>
+    );
+  }
 
   return (
     <div className="p-4">
-        <h1 className="text-2xl font-bold mb-4">Your Favorite Books</h1>
+      <h1 className="text-2xl font-bold mb-4">Your Favorite Books</h1>
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {favorites.map((favorite) => (
-          <li key={favorite.id} className="mb-2 p-2 border border-gray-300 rounded shadow-md">
+          <li
+            key={favorite.id}
+            className="mb-2 p-2 border border-gray-300 rounded shadow-md"
+          >
             <div className="w-full flex-col justify-between items-center">
               <img
                 src={favorite.image}
@@ -26,7 +43,7 @@ const Favorites: React.FC = () => {
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default Favorites
+export default Favorites;
